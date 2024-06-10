@@ -1,18 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import Message from './components/Message.vue'
-import { useMouse } from './composables/mouse'
-import { usePooling } from './composables/pooling'
+import { RouterLink, RouterView, useRoute } from 'vue-router';
+// import { usePooling } from './composables/pooling'
 
-const {x, y} = useMouse();
-const { data }= usePooling();
+// const {x, y} = useMouse();
+// const { data }= usePooling();
+const route = useRoute();
 </script>
 
 <template>
   <div>
-    <h1>X: {{ x }} Y: {{ y }}</h1>
-    <h2>POOLING DATA: {{ data?.random }}</h2>
-    <Message />
+    <h1>App: {{ route.fullPath }}</h1>
+    <nav>
+      <RouterLink to="/login">Go to Login</RouterLink>
+      <RouterLink to="/">Go to Main</RouterLink>
+    </nav>
+    <main>
+      <RouterView />
+    </main>
   </div>
 </template>
 
