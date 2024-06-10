@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import Message from '../components/Message.vue';
-
+import Canvas from '../components/Canvas.vue';
 </script>
 
 <template>
   <div>
     <h1>Main Page</h1>
-    <Message />
+    <Canvas />
   </div>
 </template>

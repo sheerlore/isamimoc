@@ -8,12 +8,14 @@ const route = useRoute();
 </script>
 
 <template>
-  <div>
-    <h1>App: {{ route.fullPath }}</h1>
-    <nav>
-      <RouterLink to="/login">Go to Login</RouterLink>
-      <RouterLink to="/">Go to Main</RouterLink>
-    </nav>
+  <div id="wrapper">
+    <header id="app-header">
+      <h1>App: {{ route.fullPath }}</h1>
+      <nav>
+       <RouterLink to="/login">Go to Login</RouterLink>
+       <RouterLink to="/">Go to Main</RouterLink>
+      </nav>
+    </header>
     <main>
       <RouterView />
     </main>
@@ -21,4 +23,10 @@ const route = useRoute();
 </template>
 
 <style scoped>
+#wrapper {
+  border: 1 solid #000;
+}
+#app-header {
+  float: left;
+}
 </style>
