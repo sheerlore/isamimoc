@@ -8,3 +8,6 @@ users_dao = UserDAO()
 class UserService:
     def get_all_user(self) -> List[User]:
         return users_dao.getAll()
+
+    def get_all_doc(self):
+        return users_dao.getAllDocumentID()

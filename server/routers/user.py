@@ -19,3 +19,12 @@ def list_users():
     if not users:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     return users
+
+@router.get(
+    "/users/docs"
+)
+def list_user_doc():
+    users_docs = user_services.get_all_doc()
+    if not users_docs:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+    return users_docs

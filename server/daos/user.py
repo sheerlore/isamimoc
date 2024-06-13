@@ -13,3 +13,10 @@ class UserDAO:
             for doc in users_ref.list_documents()
             if doc.get().to_dict()
         ]
+        
+    def getAllDocumentID(self):
+        user_doc_ref= db.collection(self.collection_name)
+        return [
+            doc.id
+            for doc in user_doc_ref.get()
+        ]
