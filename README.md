@@ -7,6 +7,8 @@ FastAPI + Vue3で遊ぶ用
 - Vue3 Pooling
 - Vue3 Composables
 - Vue3 Pinia State Management
+- Vue3 Canvas Painting  
+- Mock Firestore
 
 ```bash
 $ python -m venv venv
@@ -20,3 +22,7 @@ $ cd server
 $ fastapi dev main.py
 
 ```
+
+## 参考
+
+https://github.com/anthonycorletti/firestore-fastapi/tree/main/firestorefastapi

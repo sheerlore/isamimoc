@@ -6,7 +6,7 @@ interface PoolingData {
 
 export function usePooling() {
     const data = ref<PoolingData | null>(null)
-    let intervalId: number | null = null 
+    let intervalId: NodeJS.Timeout| null = null 
 
     const fetchData = async () => {
         try {
@@ -19,7 +19,7 @@ export function usePooling() {
     }
 
     const startPooling = () => {
-        intervalId = setInterval(fetchData, 5000)
+        intervalId = setInterval(fetchData, 1000)
     }
 
     const stopPooling = () => {

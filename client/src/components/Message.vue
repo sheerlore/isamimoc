@@ -12,9 +12,8 @@ const { x, y } = useMouse()
 
 <template>
   <div class="child">
-    <h1>{{ store.count }}</h1>
     <h1>{{ props.data }}</h1>
-    <h2>{{ store.doubleCount }}</h2>
+    <h2>{{ store.count }}-{{ store.doubleCount }}</h2>
     <h3>Mouse position is at: {{ x }} {{ y }}</h3>
     <button @click="store.increment">Count</button>
   </div>
