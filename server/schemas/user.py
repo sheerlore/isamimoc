@@ -1,24 +1,80 @@
-from typing import List
-from pydantic import BaseModel
+from typing import TypeAlias
+from pydantic import BaseModel, ConfigDict
 
-# Firestoreで用いるデータ基本的にドキュメント以下のデータを記述する
 
-class User(BaseModel):
-    name: str
-    email: str
-    is_afk: bool = False 
+Email: TypeAlias = str
+
+# Firestoreのデータ構造で用いるデータ
+
+class IsAFK(BaseModel):
+    """
+    離席中かどうか
+    例：
+    {
+        "is_afk": False
+    }
+    """
+    is_afk: bool
 
 class TmpStatus(BaseModel):
-    icon: str | None = None
-    comment: str | None = None
+    """
+    一時ステータス
+    例：
+    {
+        "icon": "😁",
+        "comment": "smile"
+    }
+    """
+    icon: str
+    comment: str
 
 class SeatPos(BaseModel):
-    mapID: str
+    """
+    マップ情報
+    例：
+    {
+        "map_Id": 0,
+        "x": 30,
+        "y": 20,
+    }
+    """
+    map_Id: int 
     x: int
     y: int
 
-class SearchUser(BaseModel):
-    token: List[str] 
+class User(IsAFK):
+    """
+    ユーザー基本情報
+    例：
+    {
+        "name": mail.example,
+        "email": mail.example.com,
+        "is_afk": False,
+    }
+    """
+    name: str
+    email: str
 
-class SearchResult(BaseModel):
-    users: List[User]
+class UserFull(User):
+    """
+    ユーザー完全情報
+    例：
+    {
+        "name": mail.example,
+        "email": mail.example.com,
+        "is_afk": False,
+        "tmp_status": {
+            "icon": "😁",
+            "comment": "smile"
+        },
+        "seat_pos": {
+            "map_Id": 0,
+            "x": 30,
+            "y": 20,
+        },
+        
+    }
+    """
+    model_config = ConfigDict(arbitrary_types_allowed=True)
+    tmp_status: TmpStatus
+    seat_pos: SeatPos
