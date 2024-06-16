@@ -5,8 +5,8 @@ from fastapi import APIRouter, HTTPException, status,Depends
 from schemas.user import UserFull, TmpStatus, IsAFK, SeatPos
 from services.user import UserService
 
-from auth import validate_iap_jwt
 from schemas.auth import IAPJwtPayload
+from auth import validate_iap_jwt
 
 router = APIRouter()
 

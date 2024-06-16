@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from auth import validate_iap_jwt
-from api import user, test
+from api import user, test, search
 
 app = FastAPI(
     # すべてのエンドポイントでIAPから渡されるJWTトークンを必須化する
@@ -27,5 +27,6 @@ app.add_middleware(
 
 app.include_router(user.router, prefix="/api")
 app.include_router(test.router, prefix="/api")
+app.include_router(search.router, prefix="/api")
 
 app.mount("/", StaticFiles(directory="dist", html=True), name="dist")

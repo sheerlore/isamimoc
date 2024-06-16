@@ -65,5 +65,7 @@ class UserDAO:
             user_dict['seat_pos']['y'] = data.y
             db.collection("users").document(doc.id).update(user_dict)
             return doc.to_dict()
+        
+    # SEARCH
+    def search_users_by_query(q: str, limit: int):
         pass
-    

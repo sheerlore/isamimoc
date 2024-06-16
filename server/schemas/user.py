@@ -1,4 +1,4 @@
-from typing import TypeAlias
+from typing import TypeAlias, List
 from pydantic import BaseModel, ConfigDict
 
 
@@ -78,3 +78,25 @@ class UserFull(User):
     model_config = ConfigDict(arbitrary_types_allowed=True)
     tmp_status: TmpStatus
     seat_pos: SeatPos
+
+class UserFullWithToken(UserFull):
+    """
+    検索用トークンを含んだ形のユーザー完全情報
+    例：
+    {
+        "name": mail.example,
+        "email": mail.example.com,
+        "is_afk": False,
+        "tmp_status": {
+            "icon": "😁",
+            "comment": "smile"
+        },
+        "seat_pos": {
+            "map_Id": 0,
+            "x": 30,
+            "y": 20,
+        },
+        
+    }
+    """
+    token: List[str]
