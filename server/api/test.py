@@ -5,7 +5,7 @@ from jose import jwt
 from auth import validate_iap_jwt
 from schemas.auth import IAPJwtPayload
 
-from config import get_settings, Settings
+# from config import get_settings, Settings
 
 router = APIRouter()
 

@@ -5,7 +5,6 @@ from fastapi import Request, HTTPException, status, Depends
 from fastapi.security import APIKeyHeader
 from schemas.auth import IAPJwtPayload
 from config import get_settings, Settings
-from jose import JWTError
 
 iap_jwt_token_header= APIKeyHeader(name="x-goog-iap-jwt-assertion", auto_error=True)
 
@@ -15,10 +14,10 @@ def validate_iap_jwt(
     jwt_token: str = Depends(iap_jwt_token_header),
 ):
     expected_aud = settings.expected_aud
-    expected_iss = settings.iss
+    expected_iss = settings.expected_iss
 
     if not expected_aud or not expected_iss:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="読み込みエラー")
 
     try:
         decoded_jwt = id_token.verify_token(

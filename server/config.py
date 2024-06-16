@@ -7,7 +7,7 @@ from functools import lru_cache
 class Settings(BaseSettings):
     app_name: str = "Awesome API"
     expected_aud: str
-    iss: str
+    expected_iss: str
 
     model_config = SettingsConfigDict(env_file=".env")
 

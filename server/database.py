@@ -4,10 +4,12 @@ db = MockFirestore()
 
 userRef = db.collection('users')
 userRef.add({
-    'username': "name1",
-    'email': "example1.com"
+    'name': "name1",
+    'email': "example1.com",
+    'is_afk': False
 })
 userRef.add({
-    'username': "name2",
-    'email': "example2.com"
+    'name': "name2",
+    'email': "example2.com",
+    'is_afk': False
 })
