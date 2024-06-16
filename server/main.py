@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 
-from api import user
+from api import user, test
 
 app = FastAPI()
 
@@ -22,5 +22,7 @@ app.add_middleware(
 )
 
 app.include_router(user.router, prefix="/api")
+app.include_router(test.router, prefix="/api")
+
 
 app.mount("/", StaticFiles(directory="dist", html=True), name="dist")
